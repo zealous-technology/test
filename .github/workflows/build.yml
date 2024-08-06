@@ -1,0 +1,39 @@
+name: my-workflow
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - closed
+  workflow_dispatch:
+
+env:
+  message: Hello
+  id: 1234
+
+jobs:
+  build-it:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+    
+      - name: opened
+        if: github.event.action == 'opened'
+        run: |
+          echo 'PR was opened'
+    
+      - name: build
+        run: |
+            echo 'foooo'
+            echo ${{ vars.USER }}
+            echo ${{ vars.OWNER }}
+            echo ${{ env.message}}
+            echo ${{ env.id }}
+
+      - name: closed
+        if: ${{ github.event.action == 'closed' }}
+        run: |
+          echo 'PR was closed'

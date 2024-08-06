@@ -1,0 +1,21 @@
+name: delete
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        options:
+          - Dev
+          - Test
+jobs:
+  delete_job:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - name: display
+        run: |
+          echo "Hello ${{ vars.OWNER }}"
+          echo ${{ vars.OWNER }}
+          echo Hello
+          echo Hello ${{ vars.OWNER }}

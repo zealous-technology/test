@@ -1,0 +1,30 @@
+name: tagged
+on:
+  push:
+
+env:
+  source: test
+
+jobs:
+  work:
+    runs-on: ubuntu-latest    
+    steps:
+      - name: check-tag
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          echo 'its main'
+          echo ${{ env.is_tag }}
+          echo ${{ github.ref_type }}
+          echo ${{ github.event.ref }}
+
+      - name: always
+        run: |
+          echo 'i should always run'
+    
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: work
+    steps:
+      - name: foo
+        run: |
+          echo 'i am cleaning up'

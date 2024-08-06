@@ -1,0 +1,17 @@
+name: labeled
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [labeled]
+
+jobs:
+  message:
+    if: github.event.label.name == 'steve'
+    runs-on: ubuntu-latest
+    steps:
+      - name: show_label
+        run: |
+          echo "Label added: ${{ github.event.label.name }}"
+          echo 'done'
