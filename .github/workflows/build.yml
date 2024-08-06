@@ -1,0 +1,12 @@
+name: my-workflow
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-it:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: echo 'foooo'
