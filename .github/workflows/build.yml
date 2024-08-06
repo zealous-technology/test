@@ -1,0 +1,23 @@
+name: my-workflow
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  message: Hello
+  id: 1234
+
+jobs:
+  build-it:
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+      - name: build
+        run: |
+            echo 'foooo'
+            echo ${{ vars.USER }}
+            echo ${{ vars.OWNER }}
+            echo ${{ env.message}}
+            echo ${{ env.id }}
