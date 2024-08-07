@@ -13,5 +13,5 @@ jobs:
         run: |
           echo ${{ env.is_tag }}
           echo ${{ github.ref_type }}
-          echo ${{ github.event }}
+          echo ${{ github.event.ref }}
     
