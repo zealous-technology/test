@@ -8,9 +8,11 @@ env:
 jobs:
   work:
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: check-tag
         run: |
+          echo 'its main'
           echo ${{ env.is_tag }}
           echo ${{ github.ref_type }}
           echo ${{ github.event.ref }}
