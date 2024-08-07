@@ -18,7 +18,7 @@ jobs:
     environment: Dev
     steps:
       - name: opened
-        if: ${{ github.event.action == 'opened' }}
+        if: github.event.action == 'opened'
         run: |
           echo 'PR was opened'
     
