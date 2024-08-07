@@ -12,3 +12,4 @@ jobs:
       - name: check-tag
         run: |
           echo ${{ env.is_tag }}
+          echo ${{ github.ref_type }}
