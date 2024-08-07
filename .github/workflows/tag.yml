@@ -1,0 +1,14 @@
+name: tagged
+on:
+  push:
+
+env:
+  is_tag: ${{ github.ref_type }} == "tag"
+
+jobs:
+  work:
+    runs-on: ubutnu-latest
+    steps:
+      - name: check-tag
+        run: |
+          echo ${{ env.is_tag }}
