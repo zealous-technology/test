@@ -3,9 +3,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - opened
-      - closed
   workflow_dispatch:
 
 env:
@@ -17,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: Dev
     steps:
+      - name: checkout
+      - uses: actions/checkout@v4
+    
       - name: opened
         if: github.event.action == 'opened'
         run: |
