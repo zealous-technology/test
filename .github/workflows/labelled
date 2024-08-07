@@ -1,6 +1,8 @@
 name: labelled
 on:
   pull_request:
+    branches:
+      - main
     types: labeled
 
 jobs:
