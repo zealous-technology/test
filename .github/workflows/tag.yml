@@ -7,13 +7,17 @@ env:
 
 jobs:
   work:
-    runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest    
     steps:
       - name: check-tag
+        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           echo 'its main'
           echo ${{ env.is_tag }}
           echo ${{ github.ref_type }}
           echo ${{ github.event.ref }}
+
+      - name: always
+        run: |
+          echo 'i should always run'
     
