@@ -15,7 +15,7 @@ jobs:
     environment: Dev
     steps:
       - name: checkout
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
     
       - name: opened
         if: github.event.action == 'opened'
