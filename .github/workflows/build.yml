@@ -14,6 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: Dev
     steps:
+      - name: opened
+        if: ${{ github.event.action == 'opened' }}
+        run: |
+          echo 'PR was opened'
+    
       - name: build
         run: |
             echo 'foooo'
@@ -21,3 +26,8 @@ jobs:
             echo ${{ vars.OWNER }}
             echo ${{ env.message}}
             echo ${{ env.id }}
+
+      - name: closed
+        if: ${{ github.event.action == 'closed' }}
+        run: |
+          echo 'PR was closed'
