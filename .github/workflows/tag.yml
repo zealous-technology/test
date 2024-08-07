@@ -3,27 +3,15 @@ on:
   push:
 
 env:
-  is_tag: ${{ github.ref_type }} == "tag"
   source: test
 
 jobs:
   work:
-    if: ${{ env.source }} == test
     runs-on: ubuntu-latest
     steps:
       - name: check-tag
         run: |
           echo ${{ env.is_tag }}
           echo ${{ github.ref_type }}
-      
-      - name: is_test
-        run: |
-          echo 'is test'
-
-  no-work:
-    if: ${{ env.source }} != test
-    runs-on: ubuntu-latest
-    steps:
-      - name: nothing
-        run: |
-          echo 'nothing to do. not test'
+          echo ${{ github.event }}
+    
